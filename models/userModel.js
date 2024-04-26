@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
+  customer_id: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -10,6 +14,14 @@ const userSchema = mongoose.Schema({
     required: true,
   },
   phone: {
+    type: String,
+    required: true,
+  },
+  broker: {
+    type: String,
+    required: true,
+  },
+  broker_user_id: {
     type: String,
     required: true,
   },
