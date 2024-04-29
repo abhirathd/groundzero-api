@@ -52,7 +52,6 @@ function authenicateZerodha(broker_user_id, encToken) {
   const headers = {
     Authorization: `enctoken ${encToken}`,
   };
-  
 
   const rootUrl = "https://api.kite.trade";
 
