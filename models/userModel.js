@@ -25,6 +25,13 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  enc_token: {
+    type: String,
+  },
+  is_authenticated: {
+    type: Boolean,
+    default: false
+  },
   isAdmin: {
     type: Boolean,
     default: false,
