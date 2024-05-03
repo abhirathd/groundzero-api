@@ -3,16 +3,23 @@ const mongoose = require("mongoose");
 var mongourl = process.env.MONGODB_URL;
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const {randomBytes} = require("crypto")
 const User = require("./models/userModel");
+const path = require('path');
+
 
 const generateToken = () => {
   return randomBytes(20).toString("hex");
 };
 
 app.use(bodyParser.urlencoded({ extended: false }));
+// Set the directory for static files (like CSS, images, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors())
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
@@ -168,6 +175,10 @@ app.get("/deleteallusers", async (request, response) => {
   const users = await User.deleteMany({});
   response.json(users);
 });
+
+app.get("/createuser", async (request, response) => {
+  response.sendFile(path.join(__dirname, 'public', 'templates', 'createuser.html'));
+})
 
 mongoose
   .connect(mongourl)
