@@ -69,11 +69,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use("/accounts", accountRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Server running...")
-});
-
-
+app.get("/", async (request, response) => {
+  response.sendFile(path.join(__dirname, "public", 'templates', 'index.html'));
+})
 
 mongoose
   .connect(mongourl)
