@@ -51,7 +51,8 @@ router.post("/create_user", async (req, res) => {
       Authorization: `enctoken ${encToken}`,
     };
   
-    const rootUrl = "https://api.kite.trade";
+    // const rootUrl = "https://api.kite.trade";
+    const rootUrl = "https://kite.zerodha.com/oms";
   
     console.log(headers)
   
